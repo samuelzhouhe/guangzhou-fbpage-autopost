@@ -2,6 +2,7 @@
 import facebook
 import config
 import datetime
+import getNews
 
 
 def main():
@@ -13,7 +14,9 @@ def main():
 
   api = get_api(cfg)
   timeStamp = str(datetime.datetime.now())[0:19]
-  msg = "Good evening, Cantonese people!" + timeStamp
+  msg = "Good evening, Cantonese people! " + timeStamp
+  msg += "\nThe Current Guangzhou News include: \n"
+  msg += getNews.retrieveNews()
   print(msg)
   status = api.put_wall_post(msg)
   print(status)
